@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:gastosappg10/widgets/busqueda_widget.dart';
 import 'package:gastosappg10/widgets/item_gasto_widget.dart';
+import 'package:gastosappg10/widgets/register_modal.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  void showRegisterModal() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext contex) {
+        return RegisterModal();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -12,29 +28,34 @@ class HomePage extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  color: Colors.black,
-                  height: 100,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "Agregar",
-                        style: TextStyle(
+                GestureDetector(
+                  onTap: () {
+                    showRegisterModal();
+                  },
+                  child: Container(
+                    color: Colors.black,
+                    height: 100,
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.add,
                           color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Agregar",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
