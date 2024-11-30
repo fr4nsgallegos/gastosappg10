@@ -38,7 +38,31 @@ class _RegisterModalState extends State<RegisterModal> {
     );
   }
 
-  void showDateTimePicker() {}
+  void showDateTimePicker() async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      firstDate: DateTime(2022),
+      lastDate: DateTime(2030),
+      initialDate: DateTime.now(),
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            dialogTheme: DialogTheme(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            colorScheme: ColorScheme.light(
+              primary: Colors.red,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    dateController.text = datePicker.toString();
+    print(dateController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +92,7 @@ class _RegisterModalState extends State<RegisterModal> {
               controller: dateController,
               isDatePicker: true,
               function: () {
+                showDateTimePicker();
                 print("Hola");
               },
             ),
