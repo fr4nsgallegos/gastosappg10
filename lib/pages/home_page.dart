@@ -14,7 +14,11 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext contex) {
-        return RegisterModal();
+        return Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: RegisterModal(),
+        );
       },
     );
   }
