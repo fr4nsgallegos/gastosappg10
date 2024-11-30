@@ -38,6 +38,8 @@ class _RegisterModalState extends State<RegisterModal> {
     );
   }
 
+  void showDateTimePicker() {}
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,9 +59,18 @@ class _RegisterModalState extends State<RegisterModal> {
             FieldModalWidget(
                 hint: "Ingresa el título", controller: titleController),
             FieldModalWidget(
-                hint: "Ingresa el monto", controller: priceController),
+              hint: "Ingresa el monto",
+              controller: priceController,
+              isNumberKeyBoard: true,
+            ),
             FieldModalWidget(
-                hint: "Ingresa la fecha", controller: dateController),
+              hint: "Ingresa la fecha",
+              controller: dateController,
+              isDatePicker: true,
+              function: () {
+                print("Hola");
+              },
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Wrap(
