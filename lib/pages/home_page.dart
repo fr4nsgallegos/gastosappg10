@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gastosappg10/widgets/busqueda_widget.dart';
+import 'package:gastosappg10/widgets/item_gasto_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -66,7 +68,9 @@ class HomePage extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                        )
+                        ),
+                        BusquedaWidget(),
+                        ItemGastoWidget(),
                       ],
                     ),
                   ),
