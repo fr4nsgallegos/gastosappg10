@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gastosappg10/db/db_admin.dart';
+import 'package:gastosappg10/models/gasto_model.dart';
 import 'package:gastosappg10/utils/data_general.dart';
 import 'package:gastosappg10/widgets/field_modal_widget.dart';
 import 'package:gastosappg10/widgets/item_type_widget.dart';
@@ -27,7 +29,29 @@ class _RegisterModalState extends State<RegisterModal> {
             borderRadius: BorderRadius.circular(16),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          GastoModel gastoModel = GastoModel(
+              title: titleController.text,
+              price: double.parse(priceController.text),
+              datetime: dateController.text,
+              type: typeSelected);
+          DbAdmin().insertarGasto(gastoModel).then((value) {
+            if (value > 0) {
+              //SE HA INSERTADO CORRECTAMENTE
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: Colors.cyan,
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  content: Text("Se ha registrado correctamente"),
+                ),
+              );
+              Navigator.pop(context);
+            }
+          });
+        },
         child: Text(
           "Agregar",
           style: TextStyle(

@@ -45,25 +45,25 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () async {
-          // DbAdmin db = DbAdmin();
-          // db.initDatabase();
-          // db.insertarGasto();
-          // db.obtenerGastos();
-          // db.updGasto();
-          // db.delGasto();
-          // DbAdmin().obtenerGastos();
+        // floatingActionButton: FloatingActionButton(onPressed: () async {
+        //   // DbAdmin db = DbAdmin();
+        //   // db.initDatabase();
+        //   // db.insertarGasto();
+        //   // db.obtenerGastos();
+        //   // db.updGasto();
+        //   // db.delGasto();
+        //   // DbAdmin().obtenerGastos();
 
-          GastoModel gastoModel = GastoModel(
-            title: "Cine",
-            price: 50.2,
-            datetime: "01/12/2024",
-            type: "Entretenimiendo",
-          );
-          DbAdmin().insertarGasto(gastoModel);
-          gastosList = await DbAdmin().obtenerGastos();
-          setState(() {});
-        }),
+        //   GastoModel gastoModel = GastoModel(
+        //     title: "Cine",
+        //     price: 50.2,
+        //     datetime: "01/12/2024",
+        //     type: "Entretenimiendo",
+        //   );
+        //   DbAdmin().insertarGasto(gastoModel);
+        //   gastosList = await DbAdmin().obtenerGastos();
+        //   setState(() {});
+        // }),
         body: Stack(
           children: [
             Column(
