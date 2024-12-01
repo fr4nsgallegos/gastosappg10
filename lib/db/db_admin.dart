@@ -7,6 +7,13 @@ import 'package:sqflite/sqflite.dart';
 class DbAdmin {
   Database? myDatabase;
 
+  static final DbAdmin _instance = DbAdmin._();
+
+  DbAdmin._();
+  factory DbAdmin() {
+    return _instance;
+  }
+
   Future<Database?> _checkDatabase() async {
     if (myDatabase == null) {
       myDatabase = await _initDatabase();
