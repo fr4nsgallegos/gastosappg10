@@ -17,4 +17,11 @@ class GastoModel {
         datetime: data["datetime"],
         type: data["type"],
       );
+
+  Map<String, dynamic> conertirAMap() => {
+        "title": title,
+        "price": price,
+        "datetime": datetime,
+        "type": type,
+      };
 }

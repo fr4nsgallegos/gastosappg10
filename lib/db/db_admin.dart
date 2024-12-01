@@ -40,14 +40,18 @@ class DbAdmin {
   }
 
   //INSERCIÓN DE DATOS
-  Future<int> insertarGasto() async {
+  Future<int> insertarGasto(GastoModel gasto) async {
     Database? db = await _checkDatabase();
-    int res = await db!.insert("GASTOS", {
-      "title": "Deuda BCP",
-      "price": 1200.50,
-      "datetime": "01/12/2024",
-      "type": "Bancos",
-    });
+    int res = await db!.insert(
+      "GASTOS",
+      gasto.conertirAMap(),
+      // {
+      //   "title": "Deuda BCP",
+      //   "price": 1200.50,
+      //   "datetime": "01/12/2024",
+      //   "type": "Bancos",
+      // },
+    );
     print(res);
     return res;
   }
