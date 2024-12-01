@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gastosappg10/db/db_admin.dart';
+import 'package:gastosappg10/models/gasto_model.dart';
 import 'package:gastosappg10/widgets/busqueda_widget.dart';
 import 'package:gastosappg10/widgets/item_gasto_widget.dart';
 import 'package:gastosappg10/widgets/register_modal.dart';
@@ -10,7 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> gastosList = [];
+  List<GastoModel> gastosList = [];
+  // List<Map<String, dynamic>> gastosList = [];
 
   //Llenando gastos list desde mi DB
   Future<void> getDataFromDB() async {
