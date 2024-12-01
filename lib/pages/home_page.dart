@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:gastosappg10/db/db_admin.dart';
 import 'package:gastosappg10/widgets/busqueda_widget.dart';
 import 'package:gastosappg10/widgets/item_gasto_widget.dart';
 import 'package:gastosappg10/widgets/register_modal.dart';
@@ -27,6 +30,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          DbAdmin db = DbAdmin();
+          db.initDatabase();
+        }),
         body: Stack(
           children: [
             Column(
