@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ItemGastoWidget extends StatelessWidget {
-  const ItemGastoWidget({super.key});
+  Map<String, dynamic> gasto;
+  ItemGastoWidget(this.gasto);
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +14,20 @@ class ItemGastoWidget extends StatelessWidget {
       ),
       child: ListTile(
         title: Text(
-          "Cine",
+          gasto["title"],
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
         subtitle: Text(
-          "2024-30-11",
+          gasto["datetime"] ?? "-",
           style: TextStyle(
             fontWeight: FontWeight.w400,
           ),
         ),
         trailing: Text(
-          "S/ 50.0",
+          "S/ ${gasto["price"]}",
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w700,

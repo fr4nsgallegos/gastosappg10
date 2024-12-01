@@ -54,11 +54,14 @@ class DbAdmin {
   //OBTENER DATOS
   Future<List<Map<String, dynamic>>> obtenerGastos() async {
     Database? db = await _checkDatabase();
-    List<Map<String, dynamic>> data = await db!
-        .query("GASTOS", columns: ["title", "price"], where: "type='Bancos'");
+    // List<Map<String, dynamic>> data = await db!
+    //     .query("GASTOS", columns: ["title", "price"], where: "type='Bancos'");
 
     // List data = await db!
     //     .rawQuery("SELECT TITLE, TYPE FROM GASTOS WHERE TYPE = 'Bancos'");
+
+    List<Map<String, dynamic>> data = await db!.query("GASTOS");
+
     print(data);
     return data;
   }

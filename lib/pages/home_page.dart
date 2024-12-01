@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:gastosappg10/db/db_admin.dart';
 import 'package:gastosappg10/widgets/busqueda_widget.dart';
@@ -12,6 +10,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Map<String, dynamic>> gastosList = [];
+
+  //Llenando gastos list desde mi DB
+  Future<void> getDataFromDB() async {
+    gastosList = await DbAdmin().obtenerGastos();
+    setState(() {});
+  }
+
   void showRegisterModal() {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
@@ -27,18 +33,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void initState() {
+    getDataFromDB();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          // DbAdmin db = DbAdmin();
-          // db.initDatabase();
-          // db.insertarGasto();
-          // db.obtenerGastos();
-          // db.updGasto();
-          // db.delGasto();
-          DbAdmin().obtenerGastos();
-        }),
+        // floatingActionButton: FloatingActionButton(onPressed: () {
+        //   // DbAdmin db = DbAdmin();
+        //   // db.initDatabase();
+        //   // db.insertarGasto();
+        //   // db.obtenerGastos();
+        //   // db.updGasto();
+        //   // db.delGasto();
+        //   DbAdmin().obtenerGastos();
+        // }),
         body: Stack(
           children: [
             Column(
@@ -107,10 +120,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         BusquedaWidget(),
-                        ItemGastoWidget(),
-                        ItemGastoWidget(),
-                        ItemGastoWidget(),
-                        ItemGastoWidget(),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: gastosList.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ItemGastoWidget(gastosList[index]);
+                            },
+                          ),
+                        )
                       ],
                     ),
                   ),
