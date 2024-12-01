@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gastosappg10/db/db_admin.dart';
+import 'package:gastosappg10/generated/l10n.dart';
 import 'package:gastosappg10/models/gasto_model.dart';
 import 'package:gastosappg10/widgets/busqueda_widget.dart';
 import 'package:gastosappg10/widgets/item_gasto_widget.dart';
@@ -133,6 +134,8 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
+                        Text(S.of(context).helloAlguien("Jhony")),
+                        // Text(S.of(context).hello),
                         BusquedaWidget(),
                         Expanded(
                           child: ListView.builder(
