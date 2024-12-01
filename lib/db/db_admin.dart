@@ -31,13 +31,24 @@ class DbAdmin {
     });
   }
 
-  insertarGasto() async {
+  //INSERCIÓN DE DATOS
+  Future<int> insertarGasto() async {
     Database? db = await _checkDatabase();
-    db!.insert("GASTOS", {
-      "title": "Compras del mercado",
-      "price": 1526.50,
+    int res = await db!.insert("GASTOS", {
+      "title": "Deuda BCP",
+      "price": 1200.50,
       "datetime": "01/12/2024",
-      "type": "Alimentos",
+      "type": "Bancos",
     });
+    print(res);
+    return res;
+  }
+
+  //OBTENER DATOS
+  obtenerGastos() async {
+    Database? db = await _checkDatabase();
+    List data = await db!
+        .rawQuery("SELECT TITLE, TYPE FROM GASTOS WHERE TYPE = 'Bancos'");
+    print(data);
   }
 }

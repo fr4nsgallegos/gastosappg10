@@ -33,7 +33,8 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(onPressed: () {
           DbAdmin db = DbAdmin();
           // db.initDatabase();
-          db.insertarGasto();
+          // db.insertarGasto();
+          db.obtenerGastos();
         }),
         body: Stack(
           children: [
