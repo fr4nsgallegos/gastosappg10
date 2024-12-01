@@ -45,13 +45,26 @@ class DbAdmin {
   }
 
   //OBTENER DATOS
-  obtenerGastos() async {
+  Future<List<Map<String, dynamic>>> obtenerGastos() async {
     Database? db = await _checkDatabase();
-    List data = await db!
+    List<Map<String, dynamic>> data = await db!
         .query("GASTOS", columns: ["title", "price"], where: "type='Bancos'");
 
     // List data = await db!
     //     .rawQuery("SELECT TITLE, TYPE FROM GASTOS WHERE TYPE = 'Bancos'");
     print(data);
+    return data;
+  }
+
+  // UPDATE GASTO
+  Future<int> updGasto() async {
+    Database? db = await _checkDatabase();
+    int res = await db!.update(
+      "GASTOS",
+      {"title": "Mercado", "price": 100.5},
+      where: "id=2",
+    );
+    print(res);
+    return res;
   }
 }

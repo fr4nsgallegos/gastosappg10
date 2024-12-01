@@ -34,7 +34,8 @@ class _HomePageState extends State<HomePage> {
           DbAdmin db = DbAdmin();
           // db.initDatabase();
           // db.insertarGasto();
-          db.obtenerGastos();
+          // db.obtenerGastos();
+          db.updGasto();
         }),
         body: Stack(
           children: [
