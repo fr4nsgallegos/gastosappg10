@@ -7,15 +7,14 @@ import 'package:sqflite/sqflite.dart';
 class DbAdmin {
   Database? myDatabase;
 
-  checkDatabase() async {
+  Future<Database?> _checkDatabase() async {
     if (myDatabase == null) {
-      myDatabase = await initDatabase();
-    } else {
-      return myDatabase;
+      myDatabase = await _initDatabase();
     }
+    return myDatabase;
   }
 
-  Future<Database> initDatabase() async {
+  Future<Database> _initDatabase() async {
     Directory directory = await getApplicationDocumentsDirectory();
     print(directory);
     String pathDatabase = join(directory.path, "GastosDB.db");
@@ -29,6 +28,16 @@ class DbAdmin {
             datetime TEXT,
             type TEXT
           )""");
+    });
+  }
+
+  insertarGasto() async {
+    Database? db = await _checkDatabase();
+    db!.insert("GASTOS", {
+      "title": "Compras del mercado",
+      "price": 1526.50,
+      "datetime": "01/12/2024",
+      "type": "Alimentos",
     });
   }
 }
