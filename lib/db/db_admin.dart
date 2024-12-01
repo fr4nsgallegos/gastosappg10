@@ -48,7 +48,10 @@ class DbAdmin {
   obtenerGastos() async {
     Database? db = await _checkDatabase();
     List data = await db!
-        .rawQuery("SELECT TITLE, TYPE FROM GASTOS WHERE TYPE = 'Bancos'");
+        .query("GASTOS", columns: ["title", "price"], where: "type='Bancos'");
+
+    // List data = await db!
+    //     .rawQuery("SELECT TITLE, TYPE FROM GASTOS WHERE TYPE = 'Bancos'");
     print(data);
   }
 }
