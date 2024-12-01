@@ -67,4 +67,12 @@ class DbAdmin {
     print(res);
     return res;
   }
+
+  //DELETE GASTO
+  Future<int> delGasto() async {
+    Database? db = await _checkDatabase();
+    int res = await db!.delete("GASTOS", where: 'id=1');
+    print(res);
+    return res;
+  }
 }
